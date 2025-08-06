@@ -17,11 +17,8 @@
 ### 1. Клонируй репозиторий и перейди в папку проекта
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/WelmyratDev/tz_app.git
 cd your-repo-name
-
-
-
 
 python -m venv env
 source env/bin/activate  # Windows: env\Scripts\activate
@@ -38,4 +35,5 @@ http://127.0.0.1:8000/docs
 
 ## Для Теста 
 docker compose run --rm web pytest -v
+
 
