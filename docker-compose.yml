@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: task_mang
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: mdb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    container_name: task_management_system
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://task_mang:123456@db:5432/mdb
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+
+volumes:
+  pgdata:
